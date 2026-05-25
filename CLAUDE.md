@@ -21,7 +21,11 @@ Este proyecto usa archivos de memoria versionados en `.claude/memory/`. Son la *
 
 2. **Si el usuario pregunta por el plan, el progreso, o "qué hemos hecho"**: la respuesta sale de estos archivos. Si no hay información, dilo explícitamente — no inventes.
 
-3. **Al cerrar un hito o tarea significativa**: actualizar el archivo correspondiente y commitearlo en el mismo cambio. No dejes la memoria desincronizada con el código.
+3. **Al cerrar un hito o tarea significativa**: pregunta al usuario explícitamente si actualizas la memoria, antes de hacerlo. No actualices ni commitees memoria sin confirmación.
+   - Formulación sugerida: "Cerramos el hito X. ¿Actualizo la memoria? (entrada en `PROGRESS.md`[, decisión en `DECISIONS.md`][, ajuste en `PLAN.md`])"
+   - Indica con concreción qué archivos tocarías y un resumen de la entrada propuesta, para que el usuario pueda aprobar, corregir o rechazar.
+   - Considera "hito cerrado" cualquiera de: feature terminada, bug arreglado y verificado, decisión de diseño tomada, cambio de alcance, fin de una sesión de trabajo intensa.
+   - Tras la confirmación, escribe las entradas y commitea en el mismo cambio que el código relacionado.
    - Cambio de código → entrada nueva en `PROGRESS.md` con fecha (YYYY-MM-DD)
    - Decisión de diseño → entrada en `DECISIONS.md`
    - Cambio de alcance o nuevos pasos → actualizar `PLAN.md`
