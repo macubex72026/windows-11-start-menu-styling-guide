@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{ for f in PROJECT PLAN PROGRESS DECISIONS; do if [ -f \".claude/memory/$f.md\" ]; then echo \"=== $f.md ===\"; cat \".claude/memory/$f.md\"; echo; fi; done; } | jq -Rs '{hookSpecificOutput:{hookEventName:\"SessionStart\",additionalContext:(\"Memoria persistente del proyecto. Léela antes de responder sobre el plan, el progreso o el estado del proyecto. Si el usuario pide un resumen del plan o de lo que se ha hecho, esta es la fuente de verdad.\\n\\n\" + .)}}'",
+            "timeout": 10,
+            "statusMessage": "Cargando memoria del proyecto..."
+          }
+        ]
+      }
+    ]
+  }
+}
